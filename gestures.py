@@ -7,7 +7,7 @@ class GestureRecognizer:
         
     def get_landmark_coords(self, landmarks, index):
         """Extract x, y, z coordinates of a landmark"""
-        return landmarks[index].x, landmarks[index].y, landmarks[index].z
+        return landmarks[0][index].x, landmarks[0][index].y, landmarks[0][index].z
     
     def calculate_distance(self, point1, point2):
         """Calculate Euclidean distance between two points"""

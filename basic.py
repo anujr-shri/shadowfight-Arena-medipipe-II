@@ -6,6 +6,7 @@ from mediapipe.tasks.python import vision
 from mediapipe.tasks import python
 import cv2
 from gestures import GestureRecognizer
+import pyautogui
 
 
 def draw_landmarks_on_image(detection_result, rgb_image):
@@ -30,7 +31,9 @@ def main():
   run_mode = RunningMode
   frame_count = 0
   base_option = python.BaseOptions(model_asset_path="pose_landmarker_full.task")
+
   recognizer = GestureRecognizer()
+
   option = PoseLandmarkerOptions(
     base_options=base_option,
     running_mode=run_mode.VIDEO,
@@ -43,8 +46,6 @@ def main():
     while True:
       step, img = cap.read()
 
-      
-
       rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
       timestamp_ms = int(frame_count * 1000 / 30)
@@ -56,9 +57,12 @@ def main():
       annoted_img = draw_landmarks_on_image(result, mp_img.numpy_view())
       rgd_annoted_img = cv2.cvtColor(annoted_img, cv2.COLOR_RGB2BGR)
       cv2.imshow('pose Detection',rgd_annoted_img)
-
-      gesture_recognized = recognizer.recognize_gesture(result)
-      print(gesture_recognized)
+      
+      if result.pose_landmarks:
+        
+        gesture_recognized = recognizer.recognize_gesture(result.pose_landmarks)
+        print(gesture_recognized)
+  
       if cv2.waitKey(1) & 0xFF == ord('q'):
         break
     cap.release()
