@@ -31,7 +31,8 @@ def draw_landmarks_on_image(detection_result, rgb_image):
 def main():
     run_mode = RunningMode
     frame_count = 0
-    base_option = python.BaseOptions(model_asset_path="pose_landmarker_full.task")
+    base_option = python.BaseOptions(model_asset_path="pose_landmarker_full.task",
+                                     delegate=mp.tasks.BaseOptions.Delegate.CPU)
 
     option = PoseLandmarkerOptions(
         base_options=base_option,
@@ -69,17 +70,8 @@ def main():
             if result.pose_landmarks:
                 landmarks = result.pose_landmarks[0]
                 gesture = gesture_recognizer.recognize_gesture(landmarks)
-                
-                # Apply cooldown and gesture change check
-                current_time = time.time()
-                if (gesture != gesture_recognizer.previous_gesture and 
-                    gesture != "none" and 
-                    current_time - gesture_recognizer.last_action_time > gesture_recognizer.cooldown):
-                    key_pressed = execute_game_action(gesture)
-                    gesture_recognizer.previous_gesture = gesture # type: ignore
-                    gesture_recognizer.last_action_time = current_time # type: ignore
-                elif gesture == "none":
-                    gesture_recognizer.previous_gesture = None
+                if gesture != "none":
+                    print(f"Detected Gesture: {gesture} and key {execute_game_action(gesture)}")
             
             bgr_annoted_img = cv2.cvtColor(annoted_img, cv2.COLOR_RGB2BGR)
             cv2.putText(bgr_annoted_img, f"Gesture: {gesture}", (10, 30),
