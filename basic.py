@@ -13,7 +13,6 @@ import time
 def draw_landmarks_on_image(detection_result, rgb_image):
     pose_landmarks_list = detection_result.pose_landmarks
     annotated_image = np.copy(rgb_image)
-
     pose_landmark_style = drawing_styles.get_default_pose_landmarks_style()
     pose_connection_style = drawing_utils.DrawingSpec(color=(0, 255, 0), thickness=2)
 
@@ -89,10 +88,4 @@ def main():
         cv2.destroyAllWindows()
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
 
