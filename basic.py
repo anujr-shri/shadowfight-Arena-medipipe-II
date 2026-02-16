@@ -6,11 +6,9 @@ from mediapipe.tasks.python import vision
 from mediapipe.tasks import python
 import cv2
 from gestures import GestureRecognizer, execute_game_action
-import pyautogui
-import time
 
 
-def draw_landmarks_on_image(detection_result, rgb_image):
+def draw_landmarks_on_image(detection_result ,rgb_image):
     pose_landmarks_list = detection_result.pose_landmarks
     annotated_image = np.copy(rgb_image)
     pose_landmark_style = drawing_styles.get_default_pose_landmarks_style()
@@ -44,7 +42,6 @@ def main():
     with PoseLandmarker.create_from_options(option) as detector:
         cap = cv2.VideoCapture(0)
         
-        # Optional: Lower resolution for better performance
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 

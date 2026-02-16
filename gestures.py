@@ -1,6 +1,7 @@
 import numpy as np
 import keyboard
 import time
+import threading
 
 class GestureRecognizer:
     def __init__(self):
@@ -11,10 +12,10 @@ class GestureRecognizer:
         self.prev_wrist_coords = {"left": None, "right": None}
         self.initial_shoulder_y = None
 
-        self.PUNCH_VEL_SENSITIVITY = 0.7  
-        self.PUNCH_ANGLE_REQ = 130      
-        self.JUMP_SENSITIVITY = 0.12  
-        self.TILT_SENSITIVITY = 0.15     
+        self.PUNCH_VEL_SENSITIVITY = 0.4 
+        self.PUNCH_ANGLE_REQ = 110     
+        self.JUMP_SENSITIVITY = 0.12
+        self.TILT_SENSITIVITY = 0.2     
 
     def get_coords(self, landmarks, index):
         lm = landmarks[index]
@@ -64,9 +65,9 @@ class GestureRecognizer:
                 current_gesture = "tilt_left"
             elif (r_sh[1] - l_sh[1]) > self.TILT_SENSITIVITY:
                 current_gesture = "tilt_right"
-
             elif (self.initial_shoulder_y - avg_y) > self.JUMP_SENSITIVITY:
-                current_gesture = "up"
+                current_gesture = "jump"
+
 
         if current_gesture != "none":
             if current_gesture != self.previous_gesture and (curr_time - self.last_action_time > self.cooldown):
@@ -82,22 +83,25 @@ class GestureRecognizer:
 
 def execute_game_action(gesture):
     """Map gestures to keyboard inputs for Shadow Fight Arena"""
+    
     action_map = {
-        "punch" : 'C',
-        "kick" : 'V',
-        "up" : 'W',
-        "tilt_left" : 'D',
-        "tilt_right" : 'A'
+        "punch": 'C',
+        "kick": 'V',
+        "tilt_left": 'D',
+        "tilt_right": 'A',
+        "jump": 'W'
     }
     
-    if gesture in action_map:
-        key = action_map[gesture]
-        if gesture in ["up", "tilt_left", "tilt_right"]:
-            for i in range(3):
-                keyboard.press(key)
-                time.sleep(0.1)
-            keyboard.release(key)
-        else:
-            keyboard.press_and_release(action_map[gesture])
-        return action_map[gesture]
-    return None
+    if gesture not in action_map:
+        return None
+    
+    key = action_map[gesture]
+    
+    if gesture in ["tilt_left", "tilt_right", "jump"]:
+        keyboard.press(key)
+        time.sleep(0.5)
+        keyboard.release(key)
+    else:
+        keyboard.press_and_release(key)
+    
+    return key
