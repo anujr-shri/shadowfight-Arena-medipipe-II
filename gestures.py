@@ -3,12 +3,14 @@ import keyboard
 import time
 import threading
 
+sleep_time = 0.5
+
 class GestureRecognizer:
     def __init__(self):
         self.previous_gesture = "none"
         self.last_action_time = 0
         self.cooldown = 0.3
-        
+
         self.prev_wrist_coords = {"left": None, "right": None}
         self.initial_shoulder_y = None
 
@@ -97,9 +99,9 @@ def execute_game_action(gesture):
     
     key = action_map[gesture]
     
-    if gesture in ["tilt_left", "tilt_right", "jump"]:
+    if gesture in ["tilt_left", "tilt_right"]:
         keyboard.press(key)
-        time.sleep(0.5)
+        time.sleep(sleep_time)
         keyboard.release(key)
     else:
         keyboard.press_and_release(key)
