@@ -53,7 +53,7 @@ pip install mediapipe opencv-python pyautogui
 ### Run
 
 ```bash
-python main.py
+python basic.py
 ```
 
 Make sure your webcam is connected and Shadow Fight Arena is open in a window. The script will auto-detect your hand and start mapping gestures to inputs.
@@ -66,7 +66,7 @@ Make sure your webcam is connected and Shadow Fight Arena is open in a window. T
 shadow-fight-automation/
 ├── basic.py              # Entry point, main loop
 ├── gesture.py  # MediaPipe hand tracking + gesture classification
-├── config.py            # Configurable keybindings and thresholds
+├── gesture_recognizer.task            # Configurable keybindings and thresholds
 └── README.md
 ```
 
