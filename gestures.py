@@ -33,7 +33,7 @@ class GestureRecognizer:
         return np.degrees(np.arccos(np.clip(cosine_angle, -1.0, 1.0)))
 
     def detect_strike(self, landmarks, side="left"):
-        # MediaPipe Indices: Left(11,13,15), Right(12,14,16)
+
         s_idx, e_idx, w_idx = (11, 13, 15) if side == "left" else (12, 14, 16)
         
         shoulder = self.get_coords(landmarks, s_idx)
@@ -42,7 +42,6 @@ class GestureRecognizer:
         
         angle = self.calculate_angle(shoulder, elbow, wrist)
         
-        # Velocity check
         current_wrist = wrist
         prev_wrist = self.prev_wrist_coords[side]
         vel = np.linalg.norm(current_wrist - prev_wrist) if prev_wrist is not None else 0
