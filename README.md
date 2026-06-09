@@ -38,11 +38,8 @@ Built in **February 2025** as a computer vision + automation side project.
 |---|---|
 | Open palm | Move forward |
 | Closed fist | Block / defend |
-| Index finger up | Light attack |
-| Two fingers up | Heavy attack |
 | Swipe left | Dash left |
 | Swipe right | Dash right |
-| Pinch | Special move |
 
 > Gesture mappings can be customized in `config.py`.
 
@@ -76,26 +73,6 @@ shadow-fight-automation/
 ├── config.py            # Configurable keybindings and thresholds
 └── README.md
 ```
-
----
-
-## 📹 Adding Your Demo Video
-
-**Option 1 — GitHub (recommended):**
-Drag and drop your `.mp4` into any GitHub Issue comment box, copy the generated URL, and paste it into the demo section above.
-
-**Option 2 — YouTube:**
-```markdown
-[![Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
-```
-
-**Option 3 — Google Drive:**
-Make the file publicly viewable and link it directly:
-```markdown
-[▶ Watch Demo on Drive](https://drive.google.com/file/d/YOUR_FILE_ID/view)
-```
-
----
 
 ## 🔧 Known Limitations
 
