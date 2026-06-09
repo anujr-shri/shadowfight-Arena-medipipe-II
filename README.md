@@ -6,8 +6,8 @@
 
 ## 📹 Demo
 
-https://github.com/user-attachments/assets/9eba4848-2478-46fd-a3f2-cd8b6849ad23
-.
+[![▶ Watch Demo](https://img.shields.io/badge/▶%20Watch%20Demo-GitHub%20Video-black?style=for-the-badge&logo=github)](https://github.com/user-attachments/assets/9eba4848-2478-46fd-a3f2-cd8b6849ad23)
+
 ---
 
 ## 🧠 Overview
@@ -38,8 +38,6 @@ Built in **February 2025** as a computer vision + automation side project.
 | Swipe left | Dash left |
 | Swipe right | Dash right |
 
-> Gesture mappings can be customized in `config.py`.
-
 ---
 
 ## 🚀 Getting Started
@@ -64,11 +62,13 @@ Make sure your webcam is connected and Shadow Fight Arena is open in a window. T
 
 ```
 shadow-fight-automation/
-├── basic.py              # Entry point, main loop
-├── gesture.py  # MediaPipe hand tracking + gesture classification
-├── gesture_recognizer.task            # Configurable keybindings and thresholds
+├── basic.py                  # Entry point, main loop
+├── gesture.py                # MediaPipe hand tracking + gesture classification
+├── gesture_recognizer.task   # Pre-trained MediaPipe gesture model
 └── README.md
 ```
+
+---
 
 ## 🔧 Known Limitations
 
@@ -82,9 +82,3 @@ shadow-fight-automation/
 
 **Anuj** — B.Tech CSE @ IIIT Bhopal  
 Built as part of an exploration into computer vision and game automation.
-
----
-
-## 📄 License
-
-MIT License — free to use, modify, and distribute.
