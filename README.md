@@ -27,7 +27,6 @@ Built in **February 2025** as a computer vision + automation side project.
 | Hand Tracking | `MediaPipe` |
 | Webcam Feed | `OpenCV` |
 | Input Simulation | `PyAutoGUI` |
-| Concurrency | `threading` |
 | Language | Python 3.x |
 
 ---
