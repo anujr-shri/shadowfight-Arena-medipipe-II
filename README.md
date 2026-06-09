@@ -6,10 +6,8 @@
 
 ## 📹 Demo
 
-https://github.com/user-attachments/assets/YOUR_VIDEO_ID_HERE
-
-> **Note:** Replace the link above with your actual video URL (YouTube, Google Drive, or a GitHub-hosted `.mp4`). See [Adding Your Demo Video](#-adding-your-demo-video) below.
-
+https://github.com/user-attachments/assets/9eba4848-2478-46fd-a3f2-cd8b6849ad23
+.
 ---
 
 ## 🧠 Overview
