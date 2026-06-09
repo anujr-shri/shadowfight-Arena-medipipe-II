@@ -64,9 +64,8 @@ Make sure your webcam is connected and Shadow Fight Arena is open in a window. T
 
 ```
 shadow-fight-automation/
-├── main.py              # Entry point, main loop
-├── gesture_detector.py  # MediaPipe hand tracking + gesture classification
-├── input_mapper.py      # Gesture → PyAutoGUI action mapping
+├── basic.py              # Entry point, main loop
+├── gesture.py  # MediaPipe hand tracking + gesture classification
 ├── config.py            # Configurable keybindings and thresholds
 └── README.md
 ```
