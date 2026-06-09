@@ -90,12 +90,12 @@ class GestureRecognizer:
             "kick": 'V'
         }
 
-        # Determine current target
+        
         target_movement = "center"
         if gesture == "tilt_left": target_movement = "left"
         elif gesture == "tilt_right": target_movement = "right"
 
-        # 1. Update the timer if we are currently tilting
+        
         if target_movement != "center":
             self.last_movement_detected_time = now
 
@@ -105,24 +105,23 @@ class GestureRecognizer:
             if (now - self.last_movement_detected_time) < self.release_delay:
                 effective_movement = self.current_movement_state # Keep holding!
 
-        # 3. STATE TRANSITION (The haaaa.py logic)
+        
         if effective_movement != self.current_movement_state:
-            # Release old
+            
             if self.is_holding:
                 old_key = action_map.get(f"tilt_{self.current_movement_state}")
                 if old_key:
                     keyboard.release(old_key)
                     self.is_holding = False
             
-            # Press new
+            
             if effective_movement in ["left", "right"]:
                 new_key = action_map[f"tilt_{effective_movement}"]
                 keyboard.press(new_key)
                 self.is_holding = True
             
             self.current_movement_state = effective_movement
-        # 4. Instant actions (Taps)
-
+      
         if gesture in ["punch", "kick", "jump"]:
             key = action_map.get(gesture)
             if key:
