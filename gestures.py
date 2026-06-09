@@ -11,8 +11,7 @@ class GestureRecognizer:
         self.last_strike_time = 0
 
         self.last_movement_detected_time = 0
-        self.release_delay = 0.15  # Small buffer to prevent "double-tap" flicker
-
+        self.release_delay = 0.15  
         self.initial_shoulder_y = None
         self.prev_wrist_coords = {"left": None, "right": None}
 
